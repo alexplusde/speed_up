@@ -1,0 +1,23 @@
+speed_up = Speed Up
+speed_up_title = Speed Up
+speed_up_settings = Einstellungen
+
+speed_up_info_ycom_active = YCom ist aktiviert. Bitte überprüfe, ob auch nach Login / Logout alles so wie gewünscht funktioniert, da das Addon hier noch nicht ausreichend getestet wurde.
+spped_up_info_url_active = URL ist aktiviert. Du kannst weitere Optimierungen vornehmen, indem du auf Artikeln mit URL-Profil über den Extension Point ergänzt. Mehr Infos in der Dokumentation dieses Addons.
+
+speed_up_profile_label = Profil
+speed_up_profile_notice = Wähle das gewünschte Profil (Standard = <code>auto</code>). Mehr über die Profile erfährst du in der Dokumentation.
+
+speed_up_profile_disabled = deaktiviert
+speed_up_profile_custom = benutzerdefiniertes Prefetching
+speed_up_profile_auto = automatisches Prefetching
+speed_up_profile_aggressive = agressives Prefetching
+
+speed_up_additional_resources_prefetch_label = Zusätzliches Prefetching
+speed_up_additional_resources_prefetch_notice = Lade diese Links von allen Seiten voraus
+
+speed_up_additional_resources_preload_label = Zusätzliches Preloading
+speed_up_additional_resources_preload_notice = Lade diese Links auf jeder aktuellen Seite noch vor allen anderen Links
+
+speed_up_info_ep = Tipp: Optimiere das Prefetching anhand eines Extension Points. Mehr Informationen dazu in der Doku.
+speed_up_info_donate = Hinweis: Dieses Addon wartet auf deine Spende, um zusätzliche Features umzusetzen, die den Page Speed Score deiner Website weiter verbessern kann. 
