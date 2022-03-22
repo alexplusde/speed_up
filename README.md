@@ -45,13 +45,13 @@ Es gibt mehrere Profile zur Auswahl. Standardmäßig wird das Profil `auto` verw
 * `disabled`: Das Addon erzeugt keine Ausgabe
 * `custom` (für Experten): Nur die in den Einstellungen hinzufgefügten Codes sowie über den EP veränderten URLs werden berücksichtigt.
 * `auto` (empfohlen): Die Startseite, sowie sofern vorhanden:
-* * Die beiden Nachbar-Kategorien der aktuellen Kategorie.
-* * Die beiden Nachbar-Artikel des aktuellen Artikels.
-* * Die erste Kind-Kategorie der aktuellen Kategorie.
+  * Die beiden Nachbar-Kategorien der aktuellen Kategorie.
+  * Die beiden Nachbar-Artikel des aktuellen Artikels.
+  * Die erste Kind-Kategorie der aktuellen Kategorie.
 * `agressive` (Empfohlen nur zu Demonstrations- und Testzwecken): Die Startseite, sowie sofern vorhanden:
-* * Alle Nachbar-Kategorien der aktuellen Kategorie.
-* * Alle Nachbar-Artikel des aktuellen Artikels (bei Kategorien: Alle Artikel in der Kategorie).
-* * Alle Kind-Kategorien der aktuellen Kategorie.
+  * Alle Nachbar-Kategorien der aktuellen Kategorie.
+  * Alle Nachbar-Artikel des aktuellen Artikels (bei Kategorien: Alle Artikel in der Kategorie).
+  * Alle Kind-Kategorien der aktuellen Kategorie.
 
 > **Tipp:** Verwende den Extension Point `PREFETCH_URLS`, um ein Array mit den URLs zu erhalten, die das Addon auf dieser Seite ausgeben wird. Ergänze oder ersetze dieses Array, wenn du mit ziemlicher Sicherheit weißt, welche Seiten als nächstes aufgerufen werden könnten - z.B. bei einer Call-To-Action, eigenen URL-Profilen oder den ersten Elementen einer Liste.
 
@@ -98,12 +98,11 @@ MIT Lizenz, siehe [LICENSE.md](https://github.com/alexplusde/speed_up/blob/maste
 ## Autoren
 
 **Alexander Walther**  
-http://www.alexplus.de  
-https://github.com/alexplusde  
-
+https://www.alexplus.de
+https://github.com/alexplusde
 
 **Projekt-Lead**  
-[Alexander Walther](https://github.com/alexplusde)
+[Alexander Walther](https://github.com/alxndr-w)
 
 ## Credits
 
