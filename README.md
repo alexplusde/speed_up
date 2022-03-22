@@ -1,8 +1,8 @@
 # SPEED_UP für REDAXO 5
 
-Ein REDAXO-Addon, das durch prefetching und preloading von Artikeln und Kategorien die wahrgenommene Ladezeit ausgewählter Seiten für Website-Besuchende auf wenige Milisekunden reduziert.
+Ein REDAXO-Addon, das durch prefetching und preloading von Artikeln und Kategorien die wahrgenommene Ladezeit ausgewählter Seiten für Website-Besuchende auf wenige Millisekunden reduziert.
 
-> **Hinweis:** Ja, Milisekunden.
+> **Hinweis:** Ja, Millisekunden.
 
 > **Use Case:** Dein Kunde hat von seinem selbst ernannten SEO-Experten gehört, wie toll WordPress ist. Bring den SEO-Experten mit der Instllation dieses Addons und der anschließenden Demonstration der Ladezeit ins Schwitzen. Zwinker. Rechne das ganze teuer als Ladezeit-Optimierung ab und [spende dem Addon-Entickler](https://github.com/sponsors/alexplusde) einen Teil vom Kuchen. Zwinker-Zwinker.
  
@@ -26,7 +26,7 @@ Voraussetzung: YRewrite muss installiert und aktiviert sein.
 
 1. Im REDAXO-Installer das Addon `speed_up` herunterladen und installieren. Anschließend erscheint unter `System` ein neuer Menüpunkt `Speed Up`.
 
-2. Wähle bei bedarf das gewünschte Konfigurationsprofil.
+2. Wähle bei Bedarf das gewünschte Konfigurationsprofil.
 
 3. Bei der Installation wurde ein Artikel-Metainfo-Feld `speed_up` angelegt. Deaktiviere die Einstellung fürs Prefetching an jedem Artikel, in dem dynamische Inhalte dargestellt werden (z.B. Aufruf mit Get-Parameter, Formulare und deren Zielseiten). Diese willst du schließlich nicht prefetchen. Nein, willst du wirklich nicht.
 
