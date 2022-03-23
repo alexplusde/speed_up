@@ -142,7 +142,7 @@ class speed_up {
     }
 
     public static function install() {
-        rex_metainfo_add_field('translate:art_speed_up_label', 'art_speed_up', '100', '1:translate:art_speed_up_label', 5, '|1|');
+        rex_metainfo_add_field('translate:art_speed_up_label', 'art_speed_up', '100', '', 5, '|1|', '1:translate:art_speed_up_label');
     }
 
     public static function getConfig($key) {
