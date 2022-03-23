@@ -3,7 +3,7 @@ speed_up_title = Speed Up
 speed_up_settings = Einstellungen
 
 speed_up_info_ycom_active = YCom ist aktiviert. Bitte überprüfe, ob auch nach Login / Logout alles so wie gewünscht funktioniert, da das Addon hier noch nicht ausreichend getestet wurde.
-spped_up_info_url_active = URL ist aktiviert. Du kannst weitere Optimierungen vornehmen, indem du auf Artikeln mit URL-Profil über den Extension Point ergänzt. Mehr Infos in der Dokumentation dieses Addons.
+speed_up_info_url_active = URL ist aktiviert. Du kannst weitere Optimierungen vornehmen, indem du auf Artikeln mit URL-Profil über den Extension Point ergänzt. Mehr Infos in der Dokumentation dieses Addons.
 
 speed_up_profile_label = Profil
 speed_up_profile_notice = Wähle das gewünschte Profil (Standard = <code>auto</code>). Mehr über die Profile erfährst du in der Dokumentation.
