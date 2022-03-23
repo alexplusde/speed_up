@@ -7,16 +7,20 @@ class speed_up {
     function __construct($profile = 'auto') { 
 
         $article_current = rex_article::getCurrent();
+        $article_current_prio = $article_current->getPriority();
+
         $category_current = $article_current->getCategory();
-        $category_children = $category_current->getChildren(true);
-        $category_parent = $category_current->getParent();
-        $category_articles = $category_current->getArticles(true);
+
+        if($category_current) {
+            $category_children = $category_current->getChildren(true);
+            $category_parent = $category_current->getParent();
+            $category_articles = $category_current->getArticles(true);
+            $category_current_prio = $category_current->getPriority();
+        }
+        
         $mount_id = rex_yrewrite::getCurrentDomain()->getMountId();
         $start_id = rex_yrewrite::getCurrentDomain()->getStartId();
         $current_id = $article_current->getId();
-
-        $category_current_prio = $category_current->getPriority();
-        $article_current_prio = $article_current->getPriority();
 
         $category_neighbours = [];
 
