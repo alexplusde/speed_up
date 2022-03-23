@@ -21,3 +21,5 @@ speed_up_additional_resources_preload_notice = Lade diese Links auf jeder aktuel
 
 speed_up_info_ep = Tipp: Optimiere das Prefetching anhand eines Extension Points. Mehr Informationen dazu in der Doku.
 speed_up_info_donate = Hinweis: Dieses Addon wartet auf deine Spende, um zusätzliche Features umzusetzen, die den Page Speed Score deiner Website weiter verbessern kann. 
+
+art_speed_up_label = Prefetching erlauben 
