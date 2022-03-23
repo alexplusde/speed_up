@@ -18,9 +18,9 @@ class speed_up {
             $category_current_prio = $category_current->getPriority();    
         } else {
             $category_children = rex_category::getRootCategories(true);
-            $category_parent = []
-            $category_articles = rex_article::getRootArticles(true)
-            $category_current_prio = 0
+            $category_parent = [];
+            $category_articles = rex_article::getRootArticles(true);
+            $category_current_prio = 0;
         }
         $mount_id = rex_yrewrite::getCurrentDomain()->getMountId();
         $start_id = rex_yrewrite::getCurrentDomain()->getStartId();
