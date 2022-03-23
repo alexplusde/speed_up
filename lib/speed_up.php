@@ -7,11 +7,10 @@ class speed_up {
     function __construct($profile = 'auto') { 
 
         $article_current = rex_article::getCurrent();
-        $category_current = rex_category::getCurrent();
+        $category_current = $article_current->getCategory();
         $category_children = $category_current->getChildren(true);
         $category_parent = $category_current->getParent();
         $category_articles = $category_current->getArticles(true);
-
         $mount_id = rex_yrewrite::getCurrentDomain()->getMountId();
         $start_id = rex_yrewrite::getCurrentDomain()->getStartId();
         $current_id = $article_current->getId();
