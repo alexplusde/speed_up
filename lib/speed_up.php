@@ -67,7 +67,7 @@ class speed_up {
                 };
             }
 
-            if($category_current->getId() != $start_id) {
+            if($category_current && $category_current->getId() != $start_id) {
                 // Startseite hinzufügen
                 $urls[$start_id] = rex_article::get($start_id)->getUrl();
             }
@@ -88,7 +88,7 @@ class speed_up {
                 $urls[$category->getId()] = $category->getUrl();
             }
 
-            if($category_current->getId() != $start_id) {
+            if($category_current && $category_current->getId() != $start_id) {
                 // Startseite hinzufügen
                 $urls[$start_id] = rex_article::get($start_id)->getUrl();
             }
