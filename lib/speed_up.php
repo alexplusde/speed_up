@@ -23,6 +23,9 @@ class speed_up {
             $category_current_prio = 0;
         }
         $mount_id = rex_yrewrite::getCurrentDomain()->getMountId();
+        if(rex_category::get($mount_id)) {
+            $category_mount_children = rex_category::get($mount_id)->getChildren(true);
+        }
         $start_id = rex_yrewrite::getCurrentDomain()->getStartId();
         $current_id = $article_current->getId();
 
@@ -36,6 +39,11 @@ class speed_up {
 
         if(self::getConfig('profile') === 'auto') {
 
+            // Mount-Point = oberste Navigationsebene (Startseite könnte auch in einer Unterkategorie sein)
+            foreach($category_mount_children as $category) {
+                $urls[$category->getId()] = $category->getUrl();
+            }
+            
             // Nur das erste Kind-Element
             foreach($category_children as $category) {
                 $urls[$category->getId()] = $category->getUrl();
@@ -74,6 +82,12 @@ class speed_up {
 
         }
         else if(self::getConfig('profile') === 'aggressive') {
+            
+            // Mount-Point = oberste Navigationsebene (Startseite könnte auch in einer Unterkategorie sein)
+            foreach($category_mount_children as $category) {
+                $urls[$category->getId()] = $category->getUrl();
+            }
+            
             foreach($category_children as $category) {
                 $urls[$category->getId()] = $category->getUrl();  
             }
