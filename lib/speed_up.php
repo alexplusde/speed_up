@@ -36,6 +36,8 @@ class speed_up {
             $category_neighbours = $category_parent->getChildren(true);
         }
 
+        // Manuelle Einstellungen
+        $article_prefetch_config = explode(",",speed_up::getConfig('prefetch_articles'));
 
         if(self::getConfig('profile') === 'auto') {
 
@@ -101,11 +103,16 @@ class speed_up {
             foreach($category_neighbours as $category) {
                 $urls[$category->getId()] = $category->getUrl();
             }
+            
 
             if($category_current && $category_current->getId() != $start_id) {
                 // Startseite hinzufügen
                 $urls[$start_id] = rex_article::get($start_id)->getUrl();
             }
+        }
+        
+        foreach($article_prefetch_config as $article_id) {
+            $urls[$article_id] = rex_article::get($article_id)->getUrl();
         }
 
         unset($urls[$current_id]);
@@ -149,6 +156,12 @@ class speed_up {
         echo PHP_EOL;
         echo self::getConfig('preload').PHP_EOL;
         echo self::getConfig('prefetch').PHP_EOL;
+        
+        $preload_media_config = explode(",",speed_up::getConfig('preload_media'));
+        
+        foreach($preload_media_config as $file) {
+            echo '<link rel="preload" href="'. rex_path::media($file) .'">'.PHP_EOL;
+        }
         
         if(self::getConfig('profile') === "custom") {
             return;
