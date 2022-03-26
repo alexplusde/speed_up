@@ -29,6 +29,12 @@ $field = $form->addTextAreaField('preload', null, ["class" => "form-control"]);
 $field->setLabel($this->i18n('speed_up_additional_resources_preload_label'));
 $field->setNotice($this->i18n('speed_up_additional_resources_preload_notice'));
 
+$field = $form->addLinkmapField('prefetch_articles');
+$field->setLabel('speed_up_additional_resources_prefeth_articles_label');
+
+$field = $form->addMedialistField('preload_media');
+$field->setLabel('speed_up_additional_resources_preload_media_label');
+
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);
 $fragment->setVar('title', $this->i18n('speed_up_settings'), false);
