@@ -112,7 +112,10 @@ class speed_up {
         }
         
         foreach($article_prefetch_config as $article_id) {
-            $urls[$article_id] = rex_article::get($article_id)->getUrl();
+            $article = rex_article::get($article_id);
+            if($article) {
+            $urls[$article_id] = $article->getUrl();                
+            }
         }
 
         unset($urls[$current_id]);
