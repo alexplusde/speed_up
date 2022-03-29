@@ -1,6 +1,6 @@
 # SPEED_UP für REDAXO 5
 
-Ein REDAXO-Addon, das durch prefetching und preloading von Artikeln und Kategorien die wahrgenommene Ladezeit ausgewählter Seiten für Website-Besuchende auf wenige Millisekunden reduziert.
+Ein REDAXO-Addon, das durch Prefetching und Preloading von Artikeln und Kategorien die wahrgenommene Ladezeit ausgewählter Seiten für Website-Besuchende auf wenige Millisekunden reduziert.
 
 > **Hinweis:** Ja, Millisekunden.
 
