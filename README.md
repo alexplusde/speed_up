@@ -18,7 +18,7 @@ Ein REDAXO-Addon, das durch Prefetching und Preloading von Artikeln und Kategori
 * **Kompatibel** Automatische Konfiguration für Instllationen, die das Addon YCom verwenden (beta)
 * **Kompatibel** Automatische Konfiguration für Instllationen, die das Addon URL verwenden (geplant)
 
-> **Steuere eigene Verbesserungen** dem [GitHub-Repository von events](https://github.com/alexplusde/speed_up) bei. Oder **unterstütze dieses Addon:** Mit einer [Spende oder Beauftragung unterstützt du die Weiterentwicklung dieses AddOns](https://github.com/sponsors/alexplusde). Es gibt noch weitere Ideen, deine Website zu beschleunigen.
+> **Steuere eigene Verbesserungen** dem [GitHub-Repository von speed_up](https://github.com/alexplusde/speed_up) bei. Oder **unterstütze dieses Addon:** Mit einer [Spende oder Beauftragung unterstützt du die Weiterentwicklung dieses AddOns](https://github.com/sponsors/alexplusde). Es gibt noch weitere Ideen, deine Website zu beschleunigen.
 
 ## Installation
 
