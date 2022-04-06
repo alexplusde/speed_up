@@ -6,6 +6,7 @@ supportpage: https://www.alexplus.de
 requires:
     redaxo: ^5.6
     yrewrite: ^2
+    metainfo: ^2
 
 page:
     hidden: true
