@@ -103,7 +103,3 @@ https://github.com/alexplusde
 
 **Projekt-Lead**  
 [Alexander Walther](https://github.com/alxndr-w)
-
-## Credits
-
-Danke an den MSG - Erste Hilfe Schule Ludwigsburg zur Beauftragung
