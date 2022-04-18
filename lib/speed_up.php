@@ -161,7 +161,9 @@ class speed_up
         $preload_media_config = explode(",", speed_up::getConfig('preload_media'));
         
         foreach ($preload_media_config as $file) {
-            echo '<link rel="preload" href="'. rex_media::get($file)->getUrl() .'">'.PHP_EOL;
+            if ($media = rex_media::get($file)) {
+                echo '<link rel="preload" href="'. $media->getUrl() .'" type="'.$media->getType().'">'.PHP_EOL;
+            }
         }
         
         if (self::getConfig('profile') === "custom") {
