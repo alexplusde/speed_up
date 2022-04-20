@@ -55,7 +55,17 @@ if (rex_addon::get('ycom')->isAvailable()) {
 if (rex_addon::get('url')->isAvailable()) {
     echo rex_view::info($this->i18n('speed_up_info_url_active'));
 }
-    echo rex_view::info($this->i18n('speed_up_info_ep'));
-?>
+
+echo rex_view::info($this->i18n('speed_up_info_ep'));
+
+$updates =  rex_install_packages::getUpdatePackages()['speed_up']['files'];
+$current_version = rex_addon::get('speed_up')->getProperty('version');
+if ($updates) {
+    $latest_version = array_pop($updates)['version'];
+}
+if (rex_version::compare($latest_version, $current_version, ">")) {
+    echo rex_view::info($this->i18n('speed_up_update_available') . " " .$latest_version);
+};
+        ?>
     </div>
 </div>
