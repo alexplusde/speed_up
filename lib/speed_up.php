@@ -6,8 +6,6 @@ class speed_up
 
     public function __construct($profile = 'auto')
     {
-        $urls = [];
-
         $article_current = rex_article::getCurrent();
         $article_current_prio = $article_current->getPriority();
 
@@ -25,8 +23,6 @@ class speed_up
             $category_current_prio = 0;
         }
         $mount_id = rex_yrewrite::getCurrentDomain()->getMountId();
-        $category_mount_children = [];
-        
         if (rex_category::get($mount_id)) {
             $category_mount_children = rex_category::get($mount_id)->getChildren(true);
         }
@@ -112,6 +108,7 @@ class speed_up
                 $urls[$start_id] = rex_article::get($start_id)->getUrl();
             }
         }
+        
         foreach ($article_prefetch_config as $article_id) {
             $article = rex_article::get($article_id);
             if ($article) {
