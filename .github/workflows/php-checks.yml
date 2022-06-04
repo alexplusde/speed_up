@@ -1,0 +1,83 @@
+# based on https://github.com/eaCe/passwordless_login/blob/master/.github/workflows/phpchecks.yml
+name: PHP checks
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: 'mariadb:10.1'
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: gd, intl, pdo_mysql
+          coverage: none # disable xdebug, pcov
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Setup Problem Matchers for PHPUnit
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Setup REDAXO
+        run: |
+          mysql -uroot -h127.0.0.1 -proot -e 'create database redaxo5;'
+          git apply .github/workflows/default.config.yml.github-action.diff
+          php .tools/bin/setup
+          vendor/redaxo/source/redaxo/bin/console system:report
+
+      # copy Addon files, ignore some directories...
+      # install phpmailer
+      # install speed_up
+      - name: Copy to Addons
+        run: |
+          rsync -av --exclude='vendor' --exclude='.github' --exclude='.git' --exclude='.tools' './' 'vendor/redaxo/source/redaxo/src/addons/speed_up'
+          vendor/redaxo/source/redaxo/bin/console package:install 'phpmailer'
+          vendor/redaxo/source/redaxo/bin/console package:install 'speed_up'
+
+      - name: Install test dependencies
+        working-directory: vendor/redaxo/source/redaxo/src/addons/speed_up
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run lint
+        working-directory: vendor/redaxo/source/redaxo/src/addons/speed_up
+        run: composer lint
+
+      - name: Run phpcs
+        working-directory: vendor/redaxo/source/redaxo/src/addons/speed_up
+        run: composer phpcs
+
+      - name: Run phpunit
+        working-directory: vendor/redaxo/source/redaxo/src/addons/speed_up
+        run: composer test
