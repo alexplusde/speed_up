@@ -53,7 +53,7 @@ jobs:
       - name: Setup REDAXO
         run: |
           mysql -uroot -h127.0.0.1 -proot -e 'create database redaxo5;'
-          git apply .github/workflows/default.config.yml.github-action.diff
+          git apply .github/workflows/php-checks-setup.diff
           php .tools/bin/setup
           vendor/redaxo/source/redaxo/bin/console system:report
 
