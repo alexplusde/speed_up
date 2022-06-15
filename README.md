@@ -4,7 +4,7 @@ Ein REDAXO-Addon, das durch Prefetching und Preloading von Artikeln und Kategori
 
 > **Hinweis:** Ja, Millisekunden.
 
-> **Use Case:** Dein Kunde hat von seinem selbst ernannten SEO-Experten gehört, wie toll WordPress ist. Bring den SEO-Experten mit der Instllation dieses Addons und der anschließenden Demonstration der Ladezeit ins Schwitzen. Zwinker. Rechne das ganze teuer als Ladezeit-Optimierung ab und [spende dem Addon-Entickler](https://github.com/sponsors/alexplusde) einen Teil vom Kuchen. Zwinker-Zwinker.
+> **Use Case:** Dein Kunde hat von seinem selbst ernannten SEO-Experten gehört, wie toll WordPress ist. Bring den SEO-Experten mit der Instllation dieses Addons und der anschließenden Demonstration der Ladezeit ins Schwitzen. Zwinker. Rechne das ganze teuer als Ladezeit-Optimierung ab und [sponsore dem Addon-Entickler](https://github.com/sponsors/alexplusde) einen Teil vom Kuchen. Zwinker-Zwinker.
  
 > **Wichtig:** Dieses Addon hat Auswirkungen darauf, wie Browser nicht nur die aktuelle Seite, sondern auch andere Seiten vorladen und zwischenspeichern. Bitte lies dir aufmerksam durch, welche manuellen Schritte ggf. durch den REDAXO-Entwickler oder Redakteur zu ergreifen sind.
 
@@ -18,7 +18,7 @@ Ein REDAXO-Addon, das durch Prefetching und Preloading von Artikeln und Kategori
 * **Kompatibel** Automatische Konfiguration für Instllationen, die das Addon YCom verwenden (beta)
 * **Kompatibel** Automatische Konfiguration für Instllationen, die das Addon URL verwenden (geplant)
 
-> **Steuere eigene Verbesserungen** dem [GitHub-Repository von speed_up](https://github.com/alexplusde/speed_up) bei. Oder **unterstütze dieses Addon:** Mit einer [Spende oder Beauftragung unterstützt du die Weiterentwicklung dieses AddOns](https://github.com/sponsors/alexplusde). Es gibt noch weitere Ideen, deine Website zu beschleunigen.
+> **Steuere eigene Verbesserungen** dem [GitHub-Repository von speed_up](https://github.com/alexplusde/speed_up) bei. Oder **unterstütze dieses Addon:** Mit einem [Sponsoring oder einer Beauftragung unterstützt du die Weiterentwicklung dieses AddOns](https://github.com/sponsors/alexplusde). Es gibt noch weitere Ideen, deine Website zu beschleunigen.
 
 ## Installation
 
