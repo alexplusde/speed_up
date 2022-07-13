@@ -63,6 +63,8 @@ Zusätzliche hartkodierte Links zu Dateien, die auf jeder Seite sofort geladen w
 
 Zusätzliche hartkodierte Links zu Dateien, die auf jeder Seite früh vorausgeladen werden sollen.
 
+### Assets-Optimierung (alias "Cache-Buster")
+
 ## Fragen und Wissenswertes
 
 ### Wie funktioniert prefetching?

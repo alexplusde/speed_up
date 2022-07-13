@@ -1,11 +1,11 @@
 package: speed_up
-version: '1.1.5'
+version: '1.2'
 author: 'Alexander Walther'
 supportpage: https://www.alexplus.de
 
 requires:
-    redaxo: ^5.6
-    yrewrite: ^2
+    redaxo: ^5.10
+    yrewrite: ^2.7
     metainfo: ^2
 
 page:
@@ -21,3 +21,4 @@ default_config:
     profile: 'auto'
     prefetch: '<!--<link rel="prefetch" href="/pfad/zu/meiner/datei.ext">-->'
     preload: '<!--<link rel="preload" href="/pfad/zu/meiner/datei.ext">-->'
+    cache_warmup: 'auto'
