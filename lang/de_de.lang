@@ -30,3 +30,7 @@ speed_up_additional_resources_preload_media_label = Immer Preload
 art_speed_up_label = Prefetching erlauben 
 
 speed_up_no_http2 = REDAXO wird ohne http/2.0 betrieben, hierfür ist auch HTTPS zwingend erforderlich. Aktuelle Protokoll-Version:
+
+speed_up_info_media_manager_responsive_title = Media-Manager-Profile optimieren
+speed_up_info_media_manager_responsive_inactive = Eine weitere Möglichkeit, die Ladezeit zu optimieren, ist der effektive Einsatz von Media-Manager-Profilen. Verwende z.B. das Addon "Media Manager Responsive" für die einfache Verwaltung von Media-Manager-Profilen.
+speed_up_info_media_manager_responsive_install = Mehr dazu

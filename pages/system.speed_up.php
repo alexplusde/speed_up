@@ -62,6 +62,15 @@ if(!rex_request::isHttps() && $_SERVER['SERVER_PROTOCOL'] != "HTTP/2.0") {
 
 echo rex_view::info($this->i18n('speed_up_info_ep'));
 
+if (!rex_addon::get('media_manager_responsive')->isAvailable()) {
+    $anchor = '<a target="_blank" href="https://github.com/alexplusde/media_manager_responsive/">'.$this->i18n('speed_up_info_media_manager_responsive_install').'</a>';
+    $fragment = new rex_fragment();
+    $fragment->setVar('class', 'info', false);
+    $fragment->setVar('title', $this->i18n('speed_up_info_media_manager_responsive_title'), false);
+    $fragment->setVar('body', '<p>' . $this->i18n('speed_up_info_media_manager_responsive_inactive') . '</p>' . $anchor, false);
+    echo $fragment->parse('core/page/section.php');
+}
+
 $package = rex_install_packages::getUpdatePackages();
 if (isset($packages['speed_up'])) {
     $current_version = rex_addon::get('speed_up')->getProperty('version');
