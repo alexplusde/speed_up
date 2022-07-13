@@ -1,6 +1,6 @@
 # SPEED_UP für REDAXO 5
 
-Ein REDAXO-Addon, das durch Prefetching und Preloading von Artikeln und Kategorien die wahrgenommene Ladezeit ausgewählter Seiten für Website-Besuchende auf wenige Millisekunden reduziert.
+Ein REDAXO-Addon, das verschiedene Techniken (Prefetching, Preloading, aggressives Caching) anwendet, um die wahrgenommene Ladezeit ausgewählter Seiten für Website-Besuchende auf wenige Millisekunden zu reduzieren.
 
 > **Hinweis:** Ja, Millisekunden.
 
@@ -8,7 +8,9 @@ Ein REDAXO-Addon, das durch Prefetching und Preloading von Artikeln und Kategori
  
 > **Wichtig:** Dieses Addon hat Auswirkungen darauf, wie Browser nicht nur die aktuelle Seite, sondern auch andere Seiten vorladen und zwischenspeichern. Bitte lies dir aufmerksam durch, welche manuellen Schritte ggf. durch den REDAXO-Entwickler oder Redakteur zu ergreifen sind.
 
-> **Wichtig** Verwende dieses Addon **nicht**, wenn du **serverseitiges Tracking** verwendest, bspw. zur Besuchszahlenmessung. Jedes per Preload/Prefetch geladene Dokument führt dazu, das Tracking zu verfälschen, weil der Server annimmt, die Seite wäre tatsächlich aufgerufen worden. Verwende stattdessen clientseitiges Tracking oder eine Technik, die außerhalb des REDAXO-Artikels bzw. REDAXO-Templates funktioniert, z.B. über die REX_API.
+> **Wichtig** Verwende Preloading und Prefetching **nicht**, wenn du **serverseitiges Tracking** verwendest, bspw. zur Besuchszahlenmessung. Jedes per Preload/Prefetch geladene Dokument führt dazu, das Tracking zu verfälschen, weil der Server annimmt, die Seite wäre tatsächlich aufgerufen worden. Verwende stattdessen clientseitiges Tracking oder eine Technik, die außerhalb des REDAXO-Artikels bzw. REDAXO-Templates funktioniert, z.B. über die REX_API.
+
+> **Tipp:** Weitere Optimierungen speziell für Bilddateien kommen im Geschwister-Addon [media_manager_responsive](https://github.com/alexplusde/media_manager_responsive/) zum Einsatz.
 
 ## Features
 
@@ -65,6 +67,45 @@ Zusätzliche hartkodierte Links zu Dateien, die auf jeder Seite früh vorausgela
 
 ### Assets-Optimierung (alias "Cache-Buster")
 
+Optional lassen sich sämtliche Assets - zumeist CSS und JS-Dateien - mit einer URL aufrufen.
+
+1. Dazu in YRewrite aggressives Caching aktivieren. Bei einem Apache-Server mit `.htaccess`-Datei betrifft dies den folgenden Konfigurations-Abschnitt zu `text/css` und `application/javascript`:
+
+```text
+<IfModule mod_expires.c>
+#	ExpiresActive On
+# [...]
+#	ExpiresByType text/css "access plus 4 weeks"
+# [...]
+#	ExpiresByType application/javascript "access plus 4 weeks"
+# [...]
+</IfModule>
+```
+
+2. Im Code alle Assets über die Methode `speed_up_assets:getUrl()` austauschen.
+
+**Beispiel vorher:**
+
+```php
+    <script src="/assets/project/js/script.js"></script>
+    <link href="/assets/lib/project/css/project.css" rel="stylesheet" type="text/css">
+```
+
+**Beispiel nachher**
+
+```php
+    <script src="<?= speed_up_asset::getUrl("project/js/script.js") ?>"></script>
+    <link href="<?= speed_up_asset::getUrl("project/css/project.css") ?>" rel="stylesheet" type="text/css">
+```
+
+**Ausgabe im Frontend**
+
+```php
+    <script src="/assets/project/js/script.js?timestamp=1234567890"></script>
+    <link href="/assets/lib/project/css/project.css?timestamp=1234567890" rel="stylesheet" type="text/css">
+```
+
+> **Tipp:** Dieselbe Optimierung lässt sich auch für Bilddateien durchführen und kommt im Geschwister-Addon [media_manager_responsive](https://github.com/alexplusde/media_manager_responsive/) zum Einsatz.
 ## Fragen und Wissenswertes
 
 ### Wie funktioniert prefetching?
