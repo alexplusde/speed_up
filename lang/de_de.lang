@@ -28,3 +28,5 @@ speed_up_additional_resources_prefeth_articles_label = Immer Prefetch
 speed_up_additional_resources_preload_media_label = Immer Preload
 
 art_speed_up_label = Prefetching erlauben 
+
+speed_up_no_http2 = REDAXO wird ohne http/2.0 betrieben, hierfür ist auch HTTPS zwingend erforderlich. Aktuelle Protokoll-Version:

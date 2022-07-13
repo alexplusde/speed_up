@@ -56,6 +56,10 @@ if (rex_addon::get('url')->isAvailable()) {
     echo rex_view::info($this->i18n('speed_up_info_url_active'));
 }
 
+if(!rex_request::isHttps() && $_SERVER['SERVER_PROTOCOL'] != "HTTP/2.0") {
+    echo rex_view::error($this->i18n('speed_up_no_http2') . $_SERVER['SERVER_PROTOCOL']);
+}
+
 echo rex_view::info($this->i18n('speed_up_info_ep'));
 
 $package = rex_install_packages::getUpdatePackages();
