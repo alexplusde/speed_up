@@ -34,7 +34,7 @@ Voraussetzung: YRewrite muss installiert und aktiviert sein.
 
 3. Bei der Installation wurde ein Artikel-Metainfo-Feld `speed_up` angelegt. Deaktiviere die Einstellung fürs Prefetching an jedem Artikel, in dem dynamische Inhalte dargestellt werden (z.B. Aufruf mit Get-Parameter, Formulare und deren Zielseiten). Diese willst du schließlich nicht prefetchen. Nein, willst du wirklich nicht.
 
-4. Füge im `<head>`-Bereich deiner Templates möglichst weit oben `$speed_up = new speed_up(); $speed_up->show();` ein, um eine Liste von `<link>`-Attributen auszugeben.
+4. Füge im `<head>`-Bereich deiner Templates möglichst weit oben `$speed_up = new speed_up(); $speed_up->show();` oder `REX_VAR_SPEED_UP[]` ein, um eine Liste von `<link>`-Attributen auszugeben.
 
 Das war's erstmal.
 
@@ -93,11 +93,18 @@ Optional lassen sich sämtliche Assets - zumeist CSS und JS-Dateien - mit einer 
     <link href="/assets/lib/project/css/project.css" rel="stylesheet" type="text/css">
 ```
 
+
 **Beispiel nachher**
 
 ```php
     <script src="<?= speed_up_asset::getUrl("project/js/script.js") ?>"></script>
     <link href="<?= speed_up_asset::getUrl("project/css/project.css") ?>" rel="stylesheet" type="text/css">
+    <!-- oder als rex_var -->
+    <script src="REX_VAR_SPEED_UP_ASSETS[file="project/js/script.js"]"></script>
+    <link href="REX_VAR_SPEED_UP_ASSETS[file="project/css/project.css"]" rel="stylesheet" type="text/css">
+```
+
+```text
 ```
 
 **Ausgabe im Frontend**
@@ -108,6 +115,7 @@ Optional lassen sich sämtliche Assets - zumeist CSS und JS-Dateien - mit einer 
 ```
 
 > **Tipp:** Dieselbe Optimierung lässt sich auch für Bilddateien durchführen und kommt im Geschwister-Addon [media_manager_responsive](https://github.com/alexplusde/media_manager_responsive/) zum Einsatz.
+
 ## Fragen und Wissenswertes
 
 ### Wie funktioniert prefetching?
