@@ -152,13 +152,19 @@ class speed_up
     }
 
 
-    public function show()
+    public function showOutput()
     {
         echo $this->get();
         return;
     }
+    
+    public function show() /* Alias, BC */
+    {
+        return $this->showOutput();
+    }
+    
 
-    public function get()
+    public function getOutput()
     {
         if (self::getConfig('profile') === 'disabled') {
             return;

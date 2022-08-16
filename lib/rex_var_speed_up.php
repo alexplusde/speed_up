@@ -8,6 +8,6 @@ class rex_var_speed_up extends rex_var
     {
         $speed_up = new speed_up();
 
-        return self::quote($speed_up->show());
+        return self::quote($speed_up->get());
     }
 }
