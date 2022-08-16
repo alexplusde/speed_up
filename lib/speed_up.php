@@ -154,18 +154,24 @@ class speed_up
 
     public function show()
     {
+        echo $this->get();
+        return;
+    }
+
+    public function get()
+    {
         if (self::getConfig('profile') === 'disabled') {
             return;
         }
-        echo PHP_EOL;
-        echo self::getConfig('preload').PHP_EOL;
-        echo self::getConfig('prefetch').PHP_EOL;
+        $output =  PHP_EOL;
+        $output .=  self::getConfig('preload').PHP_EOL;
+        $output .=  self::getConfig('prefetch').PHP_EOL;
         
         $preload_media_config = explode(",", speed_up::getConfig('preload_media'));
         
         foreach ($preload_media_config as $file) {
             if ($media = rex_media::get($file)) {
-                echo '<link rel="preload" href="'. $media->getUrl() .'" type="'.$media->getType().'">'.PHP_EOL;
+                $output .=  '<link rel="preload" href="'. $media->getUrl() .'" type="'.$media->getType().'">'.PHP_EOL;
             }
         }
         
@@ -174,10 +180,10 @@ class speed_up
         }
 
         foreach ($this->urls as $url) {
-            echo '<link rel="prefetch" href="'. $url .'">'.PHP_EOL;
+            $output .=  '<link rel="prefetch" href="'. $url .'">'.PHP_EOL;
         }
 
-        return;
+        return $output;
     }
 
     public static function install()
