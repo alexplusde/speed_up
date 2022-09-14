@@ -177,7 +177,7 @@ class speed_up
         
         foreach ($preload_media_config as $file) {
             if ($media = rex_media::get($file)) {
-                $output .=  '<link rel="preload" href="'. $media->getUrl() .'" type="'.$media->getType().'">'.PHP_EOL;
+                $output .=  '<link rel="preload" href="'. $media->getUrl() .'" as="image" type="'.$media->getType().'">'.PHP_EOL;
             }
         }
         
