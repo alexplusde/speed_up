@@ -154,7 +154,7 @@ class speed_up
 
     public function showOutput()
     {
-        echo $this->get();
+        echo $this->getOutput();
         return;
     }
     
