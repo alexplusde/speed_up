@@ -35,13 +35,13 @@ $fragment->setVar('body', $form->get(), false);
 
 ?>
 <div class="row">
-    <div class="col-lg-8">
-        <?= $fragment->parse('core/page/section.php') ?>
-    </div>
-    <div class="col-lg-4">
-        <?php
+	<div class="col-lg-8">
+		<?= $fragment->parse('core/page/section.php') ?>
+	</div>
+	<div class="col-lg-4">
+		<?php
 
-$anchor = '<a target="_blank" href="https://donate.alexplus.de/?addon=speed_up"><img src="'.rex_url::addonAssets('speed_up', 'jetzt-spenden.svg').'" style="width: 100% max-width: 400px;"></a>';
+$anchor = '<a target="_blank" href="https://donate.alexplus.de/?addon=speed_up"><img src="'.rex_url::addonAssets('speed_up', 'jetzt-beauftragen.svg').'" style="width: 100% max-width: 400px;"></a>';
 
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'info', false);
@@ -56,7 +56,7 @@ if (rex_addon::get('url')->isAvailable()) {
     echo rex_view::info($this->i18n('speed_up_info_url_active'));
 }
 
-if(!rex_request::isHttps() && $_SERVER['SERVER_PROTOCOL'] != "HTTP/2.0") {
+if (!rex_request::isHttps() && $_SERVER['SERVER_PROTOCOL'] != "HTTP/2.0") {
     echo rex_view::error($this->i18n('speed_up_no_http2') . $_SERVER['SERVER_PROTOCOL']);
 }
 
@@ -81,6 +81,6 @@ if (isset($packages['speed_up'])) {
         echo rex_view::info($this->i18n('speed_up_update_available') . " " .$latest_version);
     };
 };
-        ?>
-    </div>
+?>
+	</div>
 </div>
