@@ -1,6 +1,6 @@
 # SPEED UP! für REDAXO 5
 
-![speed_up_title](https://user-images.githubusercontent.com/3855487/178755454-5161c6ae-2773-4562-bf3d-846467504c06.png)
+![web_banner_redaxo_addon_speedup](https://user-images.githubusercontent.com/3855487/204768649-103d8e4e-91df-46d5-91a1-d0e2c70bd1cd.png)
 
 Ein REDAXO-Addon, das verschiedene Techniken (Prefetching, Preloading, aggressives Caching) anwendet, um die wahrgenommene Ladezeit ausgewählter Seiten für Website-Besuchende auf wenige Millisekunden zu reduzieren.
 
