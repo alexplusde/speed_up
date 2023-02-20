@@ -34,7 +34,7 @@ Voraussetzung: YRewrite muss installiert und aktiviert sein.
 
 3. Bei der Installation wurde ein Artikel-Metainfo-Feld `speed_up` angelegt. Deaktiviere die Einstellung fürs Prefetching an jedem Artikel, in dem dynamische Inhalte dargestellt werden (z.B. Aufruf mit Get-Parameter, Formulare und deren Zielseiten). Diese willst du schließlich nicht prefetchen. Nein, willst du wirklich nicht.
 
-4. Füge im `<head>`-Bereich deiner Templates möglichst weit oben `$speed_up = new speed_up(); $speed_up->show();` oder `REX_VAR_SPEED_UP[]` ein, um eine Liste von `<link>`-Attributen auszugeben.
+4. Füge im `<head>`-Bereich deiner Templates möglichst weit oben `$speed_up = new speed_up(); $speed_up->show();` oder `REX_SPEED_UP[]` ein, um eine Liste von `<link>`-Attributen auszugeben.
 
 Das war's erstmal.
 
