@@ -21,7 +21,7 @@ speed_up_additional_resources_preload_notice = Lade diese Links auf jeder aktuel
 
 speed_up_info_ep = Tipp: Optimiere das Prefetching anhand eines Extension Points. Mehr Informationen dazu in der Doku.
 
-speed_up_info_donate = Anders als die meisten Addons aus der REDAXO-Community ist die Entstehung und Weiterentwicklung dieses Addons nicht durch eigene Projekte gedeckt. Mit einer Spende oder einer Beauftragung sicherst du zusätzliche Features, die den Page Speed Score deiner Website weiter verbessern können, sowie eine bessere Anleitung. 
+speed_up_info_donate = Anders als die meisten Addons aus der REDAXO-Community ist die Entstehung und Weiterentwicklung dieses Addons nicht durch eigene Projekte gedeckt. mit einer einer Beauftragung sicherst du zusätzliche Features, die den Page Speed Score deiner Website weiter verbessern können, sowie eine bessere Anleitung. 
 speed_up_donate = Weiterentwicklung unterstützen 
 
 speed_up_additional_resources_prefeth_articles_label = Immer Prefetch

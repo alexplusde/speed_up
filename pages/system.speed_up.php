@@ -2,7 +2,7 @@
 
 $addon = rex_addon::get('speed_up');
 
-$form = rex_config_form::factory($addon->name);
+$form = rex_config_form::factory($addon->getName());
 
 $field = $form->addSelectField('profile');
 $field->setLabel($this->i18n('speed_up_profile_label'));

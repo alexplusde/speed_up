@@ -41,7 +41,7 @@ class speed_up
         }
 
         // Manuelle Einstellungen
-        $article_prefetch_config = explode(",", speed_up::getConfig('prefetch_articles'));
+        $article_prefetch_config = explode(",", speed_up::getConfig('prefetch_articles') ?? "");
 
         if (self::getConfig('profile') === 'auto') {
 
@@ -173,7 +173,7 @@ class speed_up
         $output .=  self::getConfig('preload').PHP_EOL;
         $output .=  self::getConfig('prefetch').PHP_EOL;
         
-        $preload_media_config = explode(",", speed_up::getConfig('preload_media'));
+        $preload_media_config = explode(",", speed_up::getConfig('preload_media') ?? "");
         
         foreach ($preload_media_config as $file) {
             if ($media = rex_media::get($file)) {
