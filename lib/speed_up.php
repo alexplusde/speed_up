@@ -186,9 +186,12 @@ class speed_up
         }
 
         foreach ($this->urls as $url) {
+            $parsedUrl = parse_url($url);
+            if (isset($parsedUrl['scheme']) && !in_array($parsedUrl['scheme'], ['http', 'https'])) {
+                continue;
+            }
             $output .=  '<link rel="prefetch" href="'. $url .'">'.PHP_EOL;
         }
-
         return $output;
     }
 
