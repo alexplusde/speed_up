@@ -1,6 +1,6 @@
 <?php
 /**
- *     REX_SPEED_UP[]
+ *     REX_SPEED_UP[].
  */
 class rex_var_speed_up extends rex_var
 {
