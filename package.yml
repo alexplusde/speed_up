@@ -10,6 +10,7 @@ requires:
 
 page:
     hidden: true
+    title: Speed Up
 
 pages: 
     system/speed_up:
