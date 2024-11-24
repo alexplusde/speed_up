@@ -26,7 +26,7 @@ class speed_up
         }
         $mount_id = rex_yrewrite::getCurrentDomain()->getMountId();
         $category_mount_children = [];
-
+        
         if (rex_category::get($mount_id)) {
             $category_mount_children = rex_category::get($mount_id)->getChildren(true);
         }
@@ -35,20 +35,21 @@ class speed_up
 
         $category_neighbours = [];
 
-        if (null != $category_parent && $category_current->getId() != $mount_id) {
+        if ($category_parent != null && $category_current->getId() != $mount_id) {
             // Nur wenn wir uns nicht in Root befinden oder überhalb eines Mount-Points - andere YRewrite-Domains möchten wir nicht prefetchen.
             $category_neighbours = $category_parent->getChildren(true);
         }
 
         // Manuelle Einstellungen
-        $article_prefetch_config = explode(',', self::getConfig('prefetch_articles') ?? '');
+        $article_prefetch_config = explode(",", speed_up::getConfig('prefetch_articles') ?? "");
 
-        if ('auto' === self::getConfig('profile')) {
+        if (self::getConfig('profile') === 'auto') {
+
             // Mount-Point = oberste Navigationsebene (Startseite könnte auch in einer Unterkategorie sein)
             foreach ($category_mount_children as $category) {
                 $urls[$category->getId()] = $category->getUrl();
             }
-
+            
             // Nur das erste Kind-Element
             foreach ($category_children as $category) {
                 $urls[$category->getId()] = $category->getUrl();
@@ -63,9 +64,9 @@ class speed_up
                 }
                 $urls[$category->getId()] = $category->getUrl();
                 // Nach 2 gefundenen Nachbarn aussteigen
-                if (2 == ++$neighbours) {
+                if (++$neighbours == 2) {
                     break;
-                }
+                };
             }
 
             $neighbours = 0;
@@ -75,21 +76,22 @@ class speed_up
                     continue;
                 }
                 $urls[$article->getId()] = $article->getUrl();
-                if (2 == ++$neighbours) {
+                if (++$neighbours == 2) {
                     break;
-                }
+                };
             }
 
             if ($category_current && $category_current->getId() != $start_id) {
                 // Startseite hinzufügen
                 $urls[$start_id] = rex_article::get($start_id)->getUrl();
             }
-        } elseif ('aggressive' === self::getConfig('profile')) {
+        } elseif (self::getConfig('profile') === 'aggressive') {
+            
             // Mount-Point = oberste Navigationsebene (Startseite könnte auch in einer Unterkategorie sein)
             foreach ($category_mount_children as $category) {
                 $urls[$category->getId()] = $category->getUrl();
             }
-
+            
             foreach ($category_children as $category) {
                 $urls[$category->getId()] = $category->getUrl();
             }
@@ -97,10 +99,13 @@ class speed_up
             foreach ($category_articles as $article) {
                 $urls[$article->getId()] = $article->getUrl();
             }
+            
+
 
             foreach ($category_neighbours as $category) {
                 $urls[$category->getId()] = $category->getUrl();
             }
+            
 
             if ($category_current && $category_current->getId() != $start_id) {
                 // Startseite hinzufügen
@@ -118,7 +123,7 @@ class speed_up
 
         $urls = rex_extension::registerPoint(new rex_extension_point(
             'PREFETCH_URLS',
-            $urls,
+            $urls
         ));
 
         /*
@@ -129,54 +134,58 @@ class speed_up
         */
         if (rex_addon::get('ycom')->isAvailable()) {
             // YCom-spezifische Seiten wie Logout sollten keinesfalls eigenständig aufgerufen werden. */
-            unset($urls[rex_config::get('ycom', 'article_id_jump_denied')]);
-            unset($urls[rex_config::get('ycom', 'article_id_jump_logout')]);
-            unset($urls[rex_config::get('ycom', 'article_id_jump_not_ok')]);
-            unset($urls[rex_config::get('ycom', 'article_id_jump_ok')]);
-            unset($urls[rex_config::get('ycom', 'article_id_jump_password')]);
-            unset($urls[rex_config::get('ycom', 'article_id_jump_termsofuse')]);
-            unset($urls[rex_config::get('ycom', 'article_id_login')]);
-            unset($urls[rex_config::get('ycom', 'article_id_logout')]);
-            unset($urls[rex_config::get('ycom', 'article_id_register')]);
-            unset($urls[rex_config::get('ycom', 'article_id_password')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_jump_denied')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_jump_logout')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_jump_not_ok')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_jump_ok')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_jump_password')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_jump_termsofuse')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_login')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_logout')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_register')]);
+            unset($urls[rex_config::get('ycom/auth', 'article_id_password')]);
             unset($urls[rex_config::get('ycom', 'otp_article_id')]);
+
         }
 
         unset($urls[rex_yrewrite::getCurrentDomain()->getNotfoundId()]);
-
+        
         $this->urls = $urls;
 
         return $this;
     }
 
+
     public function showOutput()
     {
         echo $this->getOutput();
+        return;
     }
-
+    
     public function show() /* Alias, BC */
     {
         return $this->showOutput();
     }
+    
 
     public function getOutput()
     {
-        if ('disabled' === self::getConfig('profile')) {
+        if (self::getConfig('profile') === 'disabled') {
             return;
         }
-        $output = PHP_EOL;
-        $output .= self::getConfig('preload') . PHP_EOL;
-        $output .= self::getConfig('prefetch') . PHP_EOL;
-
-        $preload_media_config = explode(',', self::getConfig('preload_media') ?? '');
-
+        $output =  PHP_EOL;
+        $output .=  self::getConfig('preload').PHP_EOL;
+        $output .=  self::getConfig('prefetch').PHP_EOL;
+        
+        $preload_media_config = explode(",", speed_up::getConfig('preload_media') ?? "");
+        
         foreach ($preload_media_config as $file) {
             if ($media = rex_media::get($file)) {
-                $output .= '<link rel="preload" href="' . $media->getUrl() . '" as="image" type="' . $media->getType() . '">' . PHP_EOL;
+                $output .=  '<link rel="preload" href="'. $media->getUrl() .'" as="image" type="'.$media->getType().'">'.PHP_EOL;
             }
         }
-
-        if ('custom' === self::getConfig('profile')) {
+        
+        if (self::getConfig('profile') === "custom") {
             return;
         }
 
@@ -185,7 +194,7 @@ class speed_up
             if (isset($parsedUrl['scheme']) && !in_array($parsedUrl['scheme'], ['http', 'https'])) {
                 continue;
             }
-            $output .= '<link rel="prefetch" href="' . $url . '">' . PHP_EOL;
+            $output .=  '<link rel="prefetch" href="'. $url .'">'.PHP_EOL;
         }
         return $output;
     }
