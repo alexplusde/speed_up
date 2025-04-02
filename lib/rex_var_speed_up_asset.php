@@ -1,4 +1,5 @@
 <?php
+
 /**
  *     REX_SPEED_UP_ASSET[file="file.jpg"] // Datei file.jpg aus dem Assets-Ordner.
  */
