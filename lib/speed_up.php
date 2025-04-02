@@ -192,7 +192,12 @@ class speed_up
 
     public static function install()
     {
-        rex_metainfo_add_field('translate:art_speed_up_label', 'art_speed_up', '100', '', 5, '|1|', '1:translate:art_speed_up_label');
+        // Prüfen, ob das Feld bereits existiert - sonst Whooops bei erneutem Setup
+        $sql = rex_sql::factory();
+        $sql->setQuery('SELECT * FROM ' . rex::getTablePrefix() . 'metainfo_field WHERE name = :name', [':name' => 'art_speed_up']);
+        if (0 === $sql->getRows()) {
+            rex_metainfo_add_field('translate:art_speed_up_label', 'art_speed_up', '100', '', 5, '|1|', '1:translate:art_speed_up_label');
+        }
     }
 
     public static function getConfig($key)
